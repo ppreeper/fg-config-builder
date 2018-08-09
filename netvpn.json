@@ -1,1260 +1,1125 @@
 {
-    "ipsec":{
-        "hub":"EDM",
-        "phase1":{
-            "keylife":"28800",
-            "proposal":["aes128-sha256","aes128-sha1"],
-            "dhgrp":["5"],
-            "psk":"testtesttest"
+    "ipsec": {
+        "hub": "EDM",
+        "phase1": {
+            "keylife": "28800",
+            "proposal": ["aes128-sha256", "aes128-sha1"],
+            "dhgrp": ["5"],
+            "psk": "testtesttest"
         },
-        "phase2":{
-            "proposal":["aes128-sha256","aes128-sha1"],
-            "dhgrp":["5"],
-            "keepalive":"enable",
-            "auto-negotiate":"enable",
-            "keylifeseconds":"1800"
+        "phase2": {
+            "proposal": ["aes128-sha256", "aes128-sha1"],
+            "dhgrp": ["5"],
+            "keepalive": "enable",
+            "auto-negotiate": "enable",
+            "keylifeseconds": "1800"
         }
     },
-    "global":{
-        "admin-sport":"20443",
-        "admin-ssh-port":"65022",
-        "admintimeout":"300"
+    "global": {
+        "admin-sport": "20443",
+        "admin-ssh-port": "65022",
+        "admintimeout": "300"
     },
-    "admin":{
-        "password":"G0tAdmin--"
+    "admin": {
+        "password": "G0tAdmin--"
     },
-    "settings":{
-        "v4-ecmp-mode":"weight-based",
-        "sip-helper":"disable",
-        "sip-nat-trace":"disable",
-        "allow-subnet-overlap":"enable"
+    "settings": {
+        "v4-ecmp-mode": "weight-based",
+        "sip-helper": "disable",
+        "sip-nat-trace": "disable",
+        "allow-subnet-overlap": "enable"
     },
-    "firewall":{
-        "addrgrp":[
-            {
-                "name":"ARTG-VPNNET"
-            }
-        ]
+    "firewall": {
+        "addrgrp": [{
+            "name": "ARTG-VPNNET"
+        }]
     },
-    "routes":{
-      "10_NET": ["10.0.0.0", "255.255.0.0"],
-      "10_10_NET": ["10.10.0.0", "255.255.0.0"],
-      "10_240_NET": ["10.240.0.0", "255.255.254.0"],
-      "192_168_NET": ["192.168.0.0", "255.255.0.0"]
+    "routes": {
+        "10_NET": ["10.0.0.0", "255.255.0.0"],
+        "10_10_NET": ["10.10.0.0", "255.255.0.0"],
+        "10_240_NET": ["10.240.0.0", "255.255.254.0"],
+        "192_168_NET": ["192.168.0.0", "255.255.0.0"]
 
     },
-    "locations":{
-        "EDM":{
-            "name":"EDM",
+    "locations": {
+        "EDM": {
+            "name": "EDM",
             "branch": "True",
             "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":22,
-                "mgmt":2,
-                "dmz":0,
-                "internal":0
+            "interfaces": {
+                "wan": 2,
+                "port": 22,
+                "mgmt": 2,
+                "dmz": 0,
+                "internal": 0
             },
-            "wan":[
-                {
-                    "port":"port1",
+            "wan": [{
+                    "port": "wan1",
                     "vpn": "True",
-                    "name":"TeraGo",
-                    "access":["ping","ssh","https"],
-                    "weight": "105",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"173.212.144.25",
-                    "address":"173.212.144.25",
-                    "netmask":"255.255.255.248",
-                    "gateway":"173.212.144.30"
-                },
-                {
-                    "port":"port2",
-                    "vpn": "False",
-                    "name":"Radiant",
-                    "access":["ping","ssh","https"],
-                    "weight": "5 ",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"216.40.122.57",
-                    "address":"216.40.122.57",
-                    "netmask":"255.255.255.248",
-                    "gateway":"216.40.122.62"
-                },
-                {
-                    "port":"port3",
-                    "vpn": "False",
-                    "name":"TeraGo3",
-                    "access":["ping","ssh","https"],
-                    "weight": "2",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"173.212.144.29",
-                    "address":"173.212.144.29",
-                    "netmask":"255.255.255.248",
-                    "gateway":"173.212.144.30"
-                },
-                {
-                    "port":"port4",
-                    "vpn": "True",
-                    "name":"TelusFibre",
-                    "access":["ping","ssh","https"],
-                    "weight": "145",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"209.89.114.186",
-                    "address":"209.89.114.186",
-                    "netmask":"255.255.255.248",
-                    "gateway":"209.89.114.185"
-                }
-            ],
-            "internal":[
-                {
-                    "port":"port5",
-                    "name":"DCNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"10.0.100.1",
-                    "netmask":"255.255.255.0"
-                },
-                {
-                    "port":"port6",
-                    "name":"EDMNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.101.1",
-                    "netmask":"255.255.255.0"
-                },
-                {
-                    "port":"port9",
-                    "name":"EDMCAMERAS",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.71.1",
-                    "netmask":"255.255.255.0"
-                },
-                {
-                    "port":"port6",
-                    "vdom":"root",
-                    "name":"EDMVOIP",
-                    "access":["ping","ssh","https"],
-                    "type":"vlan",
-                    "vlanid":"2",
-                    "address":"10.10.3.254",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "dhcp":[
-                {
-                    "port":"port5",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["190","199"]]
-                },
-                {
-                    "port":"port6",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","220"],["245","249"]]
-                }
-            ],
-            "address":[
-                {
-                    "name":"SSLVPN",
-                    "type":"iprange",
-                    "iprange":["10.240.240.1","10.240.240.254"]
-                },
-                {
-                    "name":"iOSvpn",
-                    "type":"iprange",
-                    "iprange":["10.241.241.1","10.241.241.254"]
-                }
-            ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ],
-            "vip":[
-                {
-                    "name":"FTP",
-                    "extintf":"port1",
-                    "extport":"21",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.24",
-                    "intport":"21"
-                },
-                {
-                    "name":"Support",
-                    "extintf":"port1",
-                    "extport":"54444",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.45",
-                    "intport":"22"
-                },
-                {
-                    "name":"EX2010-IMAP-SSL",
-                    "extintf":"port1",
-                    "extport":"993",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.28",
-                    "intport":"993"
-                },
-                {
-                    "name":"EX2010-SMTP-SSL",
-                    "extintf":"port1",
-                    "extport":"587",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.28",
-                    "intport":"587"
-                },
-                {
-                    "name":"OWA-traffic",
-                    "extintf":"port1",
-                    "extport":"443",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.28",
-                    "intport":"443"
-                },
-                {
-                    "name":"crm-probe",
-                    "extintf":"port1",
-                    "extport":"32345",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.111",
-                    "intport":"3389"
-                },
-                {
-                    "name":"cryoserver-terago",
-                    "extintf":"port1",
-                    "extport":"2222",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.32",
-                    "intport":"22"
-                },
-                {
-                    "name":"ceridian",
-                    "extintf":"port1",
-                    "extport":"23389",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.115",
-                    "intport":"3389"
-                },
-                {
-                    "name":"SAP-Router-DCNET",
-                    "extintf":"port1",
-                    "extport":"3299",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.12",
-                    "intport":"3299"
-                },
-                {
-                    "name":"http-8080",
-                    "extintf":"port3",
-                    "extport":"8080",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.159",
-                    "intport":"8080"
-                },
-                {
-                    "name":"http-80",
-                    "extintf":"port3",
-                    "extport":"80",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.159",
-                    "intport":"80"
-                },
-                {
-                    "name":"http-8443",
-                    "extintf":"port3",
-                    "extport":"8443",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.159",
-                    "intport":"8443"
-                },
-                {
-                    "name":"crm-external-ssh-access",
-                    "extintf":"port3",
-                    "extport":"12345",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.172",
-                    "intport":"22"
-                },
-                {
-                    "name":"http-443",
-                    "extintf":"port3",
-                    "extport":"443",
-                    "intintf":"DCNET",
-                    "intaddr":"10.0.100.159",
-                    "intport":"443"
-                },
-                {
-                    "name":"OpenVPN",
-                    "extintf":"port3",
-                    "extport":"1194",
-                    "intintf":"EDMNET",
-                    "intaddr":"192.168.101.36",
-                    "intport":"1194"
-                },
-                {
-                    "name":"PPTP-Direct",
-                    "extintf":"port3",
-                    "extport":"1723",
-                    "intintf":"EDMNET",
-                    "intaddr":"192.168.101.36",
-                    "intport":"1723"
-                }
-            ]
-        },
-        "RED":{
-            "name":"RED",
-            "branch": "True",
-            "version": "5",
-            "interfaces":{
-                "wan":0,
-                "port":10,
-                "mgmt":0,
-                "dmz":0,
-                "internal":0
-            },
-            "wan":[
-                {
-                    "port":"port1",
-                    "vpn": "True",
-                    "name":"TeraGo",
-                    "access":["ping","ssh","https"],
-                    "weight": "250",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"68.179.88.195",
-                    "address":"68.179.88.195",
-                    "netmask":"255.255.255.248",
-                    "gateway":"68.179.88.198"
-                },
-                {
-                    "port":"port2",
-                    "vpn": "True",
-                    "name":"Radiant",
-                    "access":["ping","ssh","https"],
-                    "weight": "5",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"97.75.200.221",
-                    "address":"97.75.200.221",
-                    "netmask":"255.255.255.252",
-                    "gateway":"97.75.200.222"
-                }
-            ],
-            "internal":[
-                {
-                    "port":"REDNET",
-                    "name":"REDNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"switch",
-                    "address":"192.168.116.1",
-                    "netmask":"255.255.255.0"
-                },
-                {
-                    "port":"REDNET",
-                    "name":"REDVOIP",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"vlan",
-                    "vlanid":"2",
-                    "address":"10.10.4.254",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "switch":[
-                {
-                    "name":"REDNET",
-                    "members":["port5","port6","port7","port8"]
-                }
-            ],
-            "dhcp":[
-                {
-                    "port":"REDNET",
-                    "type":"switch",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
-                }
-            ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ]
-        },
-        "SUR":{
-            "name":"SUR",
-            "branch": "True",
-            "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":16,
-                "mgmt":1,
-                "dmz":1,
-                "internal":0,
-                "ha":2
-            },
-            "wan":[
-                {
-                    "port":"port13",
-                    "vpn": "False",
-                    "name":"SmartNetDSL",
-                    "access":["ping","ssh","https"],
-                    "weight": "1",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"69.67.161.10",
-                    "address":"69.67.161.10",
-                    "netmask":"255.255.255.248",
-                    "gateway":"69.67.161.9"
-                },
-                {
-                    "port":"port14",
-                    "vpn": "False",
-                    "name":"TelusDSL",
-                    "access":["ping","ssh","https"],
-                    "weight": "1",
-                    "type":"physical",
-                    "mode":"dhcp",
-                    "extaddress":"66.183.186.240",
-                    "address":"66.183.186.240",
-                    "netmask":"255.255.255.248",
-                    "gateway":"66.183.186.1"
-                },
-                {
-                    "port":"port15",
-                    "vpn": "True",
-                    "name":"Shaw",
-                    "access":["ping","ssh","https"],
-                    "weight": "5",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"72.2.43.146",
-                    "address":"72.2.43.146",
-                    "netmask":"255.255.255.248",
-                    "gateway":"72.2.43.145"
-                },
-                {
-                    "port":"port16",
-                    "vpn": "True",
-                    "name":"TelusTeragoFibre",
-                    "access":["ping","ssh","https"],
+                    "name": "SHAW",
+                    "access": ["ping", "ssh", "https"],
                     "weight": "200",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"68.179.64.69",
-                    "address":"68.179.64.69",
-                    "netmask":"255.255.255.248",
-                    "gateway":"68.179.64.70"
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "64.141.21.138",
+                    "address": "64.141.21.138",
+                    "netmask": "255.255.255.248",
+                    "gateway": "64.141.21.137"
+                },
+                {
+                    "port": "wan2",
+                    "vpn": "True",
+                    "name": "TELUS",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "209.89.114.186",
+                    "address": "209.89.114.186",
+                    "netmask": "255.255.255.248",
+                    "gateway": "209.89.114.185"
                 }
             ],
-            "internal":[
-                {
-                    "port":"SURNET",
-                    "name":"SURNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"switch",
-                    "address":"192.168.103.1",
-                    "netmask":"255.255.255.0"
+            "internal": [{
+                    "port": "port5",
+                    "name": "DCNET",
+                    "vdom": "root",
+                    "access": ["ping", "ssh", "https"],
+                    "type": "physical",
+                    "address": "10.0.100.1",
+                    "netmask": "255.255.255.0"
                 },
                 {
-                    "port":"port9",
-                    "name":"SURCAMERAS",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.50.1",
-                    "netmask":"255.255.255.0"
+                    "port": "port7",
+                    "name": "EDMNET",
+                    "vdom": "root",
+                    "access": ["ping", "ssh", "https"],
+                    "type": "physical",
+                    "address": "192.168.101.1",
+                    "netmask": "255.255.255.0"
                 },
                 {
-                    "port":"SURNET",
-                    "name":"SURVOIP",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"vlan",
-                    "vlanid":"2",
-                    "address":"10.10.2.254",
-                    "netmask":"255.255.255.0"
+                    "port": "port9",
+                    "name": "EDMCAMERAS",
+                    "vdom": "root",
+                    "access": ["ping", "ssh", "https"],
+                    "type": "physical",
+                    "address": "192.168.71.1",
+                    "netmask": "255.255.255.0"
+                },
+                {
+                    "port": "port7",
+                    "vdom": "root",
+                    "name": "EDMVOIP",
+                    "access": ["ping", "ssh", "https"],
+                    "type": "vlan",
+                    "vlanid": "2",
+                    "address": "10.10.3.254",
+                    "netmask": "255.255.255.0"
                 }
             ],
-            "switch":[
+            "dhcp": [{
+                    "port": "port5",
+                    "type": "physical",
+                    "domain": "arthomson.local",
+                    "dns": ["10.0.100.21", "10.0.100.22"],
+                    "leasetime": "600",
+                    "iprange": [
+                        ["190", "199"]
+                    ]
+                },
                 {
-                    "name":"SURNET",
-                    "members":["port5","port6","port7","port8"]
+                    "port": "port7",
+                    "type": "physical",
+                    "domain": "arthomson.local",
+                    "dns": ["10.0.100.21", "10.0.100.22"],
+                    "leasetime": "600",
+                    "iprange": [
+                        ["100", "220"],
+                        ["245", "249"]
+                    ]
                 }
             ],
-            "dhcp":[
+            "address": [{
+                    "name": "SSLVPN",
+                    "type": "iprange",
+                    "iprange": ["10.240.240.1", "10.240.240.254"]
+                },
                 {
-                    "port":"SURNET",
-                    "type":"switch",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
+                    "name": "iOSvpn",
+                    "type": "iprange",
+                    "iprange": ["10.241.241.1", "10.241.241.254"]
                 }
             ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ],
-            "vip":[
-                {
-                    "name":"MITEL-1",
-                    "extintf":"port14",
-                    "extport":"31443",
-                    "intintf":"SURVOIP",
-                    "intaddr":"10.10.2.1",
-                    "intport":"443"
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }],
+            "vip": [{
+                    "name": "FTP",
+                    "extintf": "wan1",
+                    "extport": "21",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.24",
+                    "intport": "21"
                 },
                 {
-                    "name":"MITEL-2",
-                    "extintf":"port14",
-                    "extport":"32443",
-                    "intintf":"SURVOIP",
-                    "intaddr":"10.10.2.2",
-                    "intport":"443"
+                    "name": "Support",
+                    "extintf": "port1",
+                    "extport": "54444",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.45",
+                    "intport": "22"
                 },
                 {
-                    "name":"Card-Access",
-                    "extintf":"port14",
-                    "extport":"30080",
-                    "intintf":"SURCAMERAS",
-                    "intaddr":"192.168.50.253",
-                    "intport":"80"
+                    "name": "EX2010-IMAP-SSL",
+                    "extintf": "port1",
+                    "extport": "993",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.28",
+                    "intport": "993"
                 },
                 {
-                    "name":"Camera-Server",
-                    "extintf":"port14",
-                    "extport":"30080",
-                    "intintf":"SURCAMERAS",
-                    "intaddr":"192.168.50.27",
-                    "intport":"80"
+                    "name": "EX2010-SMTP-SSL",
+                    "extintf": "port1",
+                    "extport": "587",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.28",
+                    "intport": "587"
                 },
                 {
-                    "name":"Camera-ServerRDP",
-                    "extintf":"port14",
-                    "extport":"38389",
-                    "intintf":"SURCAMERAS",
-                    "intaddr":"192.168.50.27",
-                    "intport":"3389"
+                    "name": "OWA-traffic",
+                    "extintf": "port1",
+                    "extport": "443",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.28",
+                    "intport": "443"
+                },
+                {
+                    "name": "crm-probe",
+                    "extintf": "port1",
+                    "extport": "32345",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.111",
+                    "intport": "3389"
+                },
+                {
+                    "name": "cryoserver-terago",
+                    "extintf": "port1",
+                    "extport": "2222",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.32",
+                    "intport": "22"
+                },
+                {
+                    "name": "ceridian",
+                    "extintf": "port1",
+                    "extport": "23389",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.115",
+                    "intport": "3389"
+                },
+                {
+                    "name": "SAP-Router-DCNET",
+                    "extintf": "port1",
+                    "extport": "3299",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.12",
+                    "intport": "3299"
+                },
+                {
+                    "name": "http-8080",
+                    "extintf": "port3",
+                    "extport": "8080",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.159",
+                    "intport": "8080"
+                },
+                {
+                    "name": "http-80",
+                    "extintf": "port3",
+                    "extport": "80",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.159",
+                    "intport": "80"
+                },
+                {
+                    "name": "http-8443",
+                    "extintf": "port3",
+                    "extport": "8443",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.159",
+                    "intport": "8443"
+                },
+                {
+                    "name": "crm-external-ssh-access",
+                    "extintf": "port3",
+                    "extport": "12345",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.172",
+                    "intport": "22"
+                },
+                {
+                    "name": "http-443",
+                    "extintf": "port3",
+                    "extport": "443",
+                    "intintf": "DCNET",
+                    "intaddr": "10.0.100.159",
+                    "intport": "443"
+                },
+                {
+                    "name": "OpenVPN",
+                    "extintf": "port3",
+                    "extport": "1194",
+                    "intintf": "EDMNET",
+                    "intaddr": "192.168.101.36",
+                    "intport": "1194"
+                },
+                {
+                    "name": "PPTP-Direct",
+                    "extintf": "port3",
+                    "extport": "1723",
+                    "intintf": "EDMNET",
+                    "intaddr": "192.168.101.36",
+                    "intport": "1723"
                 }
             ]
         },
-        "PGE":{
-            "name":"PGE",
+        "RED": {
+            "name": "RED",
             "branch": "True",
             "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":0,
-                "mgmt":0,
-                "dmz":1,
-                "internal":1
+            "interfaces": {
+                "wan": 0,
+                "port": 10,
+                "mgmt": 0,
+                "dmz": 0,
+                "internal": 0
             },
-            "wan":[
-                {
-                    "port":"wan1",
+            "wan": [{
+                    "port": "port1",
                     "vpn": "True",
-                    "name":"Shaw",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"184.68.38.166",
-                    "address":"184.68.38.166",
-                    "netmask":"255.255.255.525",
-                    "gateway":"184.68.38.165"
+                    "name": "TeraGo",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "250",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "68.179.88.195",
+                    "address": "68.179.88.195",
+                    "netmask": "255.255.255.248",
+                    "gateway": "68.179.88.198"
                 },
                 {
-                    "port":"wan2",
+                    "port": "port2",
                     "vpn": "True",
-                    "name":"Radiant",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"209.207.69.193",
-                    "address":"209.207.69.193",
-                    "netmask":"255.255.255.248",
-                    "gateway":"209.207.69.198"
-                }
-            ],
-            "internal":[
-                {
-                    "port":"lan",
-                    "name":"PGENET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.130.1",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "dhcp":[
-                {
-                    "port":"lan",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
-                }
-            ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ]
-        },
-        "GPE":{
-            "name":"GPE",
-            "branch": "True",
-            "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":0,
-                "mgmt":0,
-                "dmz":1,
-                "internal":1
-            },
-            "wan":[
-                {
-                    "port":"wan1",
-                    "vpn": "True",
-                    "name":"Telus",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"dhcp",
-                    "extaddress":"137.186.60.135",
-                    "address":"137.186.60.135",
-                    "netmask":"255.255.255.0",
-                    "gateway":"137.186.60.1"
-                },
-                {
-                    "port":"wan2",
-                    "vpn": "True",
-                    "name":"Radiant",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"209.207.64.117",
-                    "address":"209.207.64.117",
-                    "netmask":"255.255.255.248",
-                    "gateway":"209.207.64.118"
-                }
-            ],
-            "internal":[
-                {
-                    "port":"internal",
-                    "name":"GPENET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.107.1",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "dhcp":[
-                {
-                    "port":"internal",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
-                }
-            ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ]
-        },
-        "FTM":{
-            "name":"FTM",
-            "branch": "True",
-            "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":0,
-                "mgmt":0,
-                "dmz":1,
-                "internal":1
-            },
-            "wan":[
-                {
-                    "port":"wan1",
-                    "vpn": "True",
-                    "name":"Telus",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"dhcp",
-                    "extaddress":"75.159.184.149",
-                    "address":"75.159.184.149",
-                    "netmask":"255.255.255.0",
-                    "gateway":"75.159.184.1"
-                },
-                {
-                    "port":"wan2",
-                    "vpn": "True",
-                    "name":"Radiant",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"209.207.64.121",
-                    "address":"209.207.64.121",
-                    "netmask":"255.255.255.248",
-                    "gateway":"209.207.64.126"
-                }
-            ],
-            "internal":[
-                {
-                    "port":"internal",
-                    "name":"FTMNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.114.1",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "dhcp":[
-                {
-                    "port":"internal",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
-                }
-            ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ]
-        },
-        "CGY":{
-            "name":"CGY",
-            "branch": "True",
-            "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":0,
-                "mgmt":0,
-                "dmz":1,
-                "internal":1
-            },
-            "wan":[
-                {
-                    "port":"wan1",
-                    "vpn": "True",
-                    "name":"TeraGo",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"68.179.6.145",
-                    "address":"68.179.6.145",
-                    "netmask":"255.255.255.248",
-                    "gateway":"68.179.6.150"
-                },
-                {
-                    "port":"wan2",
-                    "vpn": "True",
-                    "name":"Radiant",
-                    "access":["ping","ssh","https"],
+                    "name": "Radiant",
+                    "access": ["ping", "ssh", "https"],
                     "weight": "5",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"216.40.117.153",
-                    "address":"216.40.117.153",
-                    "netmask":"255.255.255.252",
-                    "gateway":"216.40.117.154"
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "97.75.200.221",
+                    "address": "97.75.200.221",
+                    "netmask": "255.255.255.252",
+                    "gateway": "97.75.200.222"
                 }
             ],
-            "internal":[
-                {
-                    "port":"lan",
-                    "name":"CGYNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.102.1",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "dhcp":[
-                {
-                    "port":"lan",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
-                }
-            ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ]
-        },
-        "MTL":{
-            "name":"MTL",
-            "branch": "True",
-            "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":0,
-                "mgmt":0,
-                "dmz":1,
-                "internal":1
-            },
-            "wan":[
-                {
-                    "port":"wan1",
-                    "vpn": "True",
-                    "name":"TeraGo",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"173.212.161.125",
-                    "address":"173.212.161.125",
-                    "netmask":"255.255.255.252",
-                    "gateway":"173.212.161.126"
+            "internal": [{
+                    "port": "REDNET",
+                    "name": "REDNET",
+                    "vdom": "root",
+                    "access": ["ping", "ssh", "https"],
+                    "type": "switch",
+                    "address": "192.168.116.1",
+                    "netmask": "255.255.255.0"
                 },
                 {
-                    "port":"wan2",
-                    "vpn": "True",
-                    "name":"Telus",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"67.208.9.211",
-                    "address":"67.208.9.211",
-                    "netmask":"255.255.255.255",
-                    "gateway":"67.208.9.211"
+                    "port": "REDNET",
+                    "name": "REDVOIP",
+                    "vdom": "root",
+                    "access": ["ping", "ssh", "https"],
+                    "type": "vlan",
+                    "vlanid": "2",
+                    "address": "10.10.4.254",
+                    "netmask": "255.255.255.0"
                 }
             ],
-            "internal":[
-                {
-                    "port":"lan",
-                    "name":"MTLNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.124.1",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "dhcp":[
-                {
-                    "port":"lan",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
-                }
-            ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ]
+            "switch": [{
+                "name": "REDNET",
+                "members": ["port5", "port6", "port7", "port8"]
+            }],
+            "dhcp": [{
+                "port": "REDNET",
+                "type": "switch",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }]
         },
-        "PRK":{
-            "name":"PRK",
+        "SUR": {
+            "name": "SUR",
             "branch": "True",
             "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":0,
-                "mgmt":0,
-                "dmz":1,
-                "internal":1
+            "interfaces": {
+                "wan": 2,
+                "port": 16,
+                "mgmt": 1,
+                "dmz": 1,
+                "internal": 0,
+                "ha": 2
             },
-            "wan":[
-                {
-                    "port":"wan1",
-                    "vpn": "True",
-                    "name":"Shaw",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"184.71.2.26",
-                    "address":"184.71.2.26",
-                    "netmask":"255.255.255.252",
-                    "gateway":"184.71.2.25"
+            "wan": [{
+                    "port": "port13",
+                    "vpn": "False",
+                    "name": "SmartNetDSL",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "1",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "69.67.161.10",
+                    "address": "69.67.161.10",
+                    "netmask": "255.255.255.248",
+                    "gateway": "69.67.161.9"
                 },
                 {
-                    "port":"wan2",
-                    "vpn": "True",
-                    "name":"Radiant",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"209.207.64.89",
-                    "address":"209.207.64.89",
-                    "netmask":"255.255.255.248",
-                    "gateway":"209.207.64.94"
-                }
-            ],
-            "internal":[
-                {
-                    "port":"lan",
-                    "name":"PRKNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.108.1",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "dhcp":[
-                {
-                    "port":"lan",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
-                }
-            ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ]
-        },
-        "REG":{
-            "name":"REG",
-            "branch": "True",
-            "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":0,
-                "mgmt":0,
-                "dmz":1,
-                "internal":1
-            },
-            "wan":[
-                {
-                    "port":"wan1",
-                    "vpn": "True",
-                    "name":"SaskTel",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"67.225.57.17",
-                    "address":"67.225.57.17",
-                    "netmask":"255.255.255.0",
-                    "gateway":"67.225.57.254"
+                    "port": "port14",
+                    "vpn": "False",
+                    "name": "TelusDSL",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "1",
+                    "type": "physical",
+                    "mode": "dhcp",
+                    "extaddress": "66.183.186.240",
+                    "address": "66.183.186.240",
+                    "netmask": "255.255.255.248",
+                    "gateway": "66.183.186.1"
                 },
                 {
-                    "port":"wan2",
+                    "port": "port15",
                     "vpn": "True",
-                    "name":"Radiant",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"67.208.25.57",
-                    "address":"67.208.25.57",
-                    "netmask":"255.255.255.248",
-                    "gateway":"67.208.25.62"
-                }
-            ],
-            "internal":[
-                {
-                    "port":"lan",
-                    "name":"REGNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"10.0.121.1",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "dhcp":[
-                {
-                    "port":"lan",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
-                }
-            ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ]
-        },
-        "DTM":{
-            "name":"DTM",
-            "branch": "True",
-            "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":0,
-                "mgmt":0,
-                "dmz":1,
-                "internal":1
-            },
-            "wan":[
-                {
-                    "port":"wan1",
-                    "vpn": "True",
-                    "name":"Alliant",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"142.177.48.2",
-                    "address":"142.177.48.2",
-                    "netmask":"255.255.255.248",
-                    "gateway":"142.177.48.1"
+                    "name": "Shaw",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "5",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "72.2.43.146",
+                    "address": "72.2.43.146",
+                    "netmask": "255.255.255.248",
+                    "gateway": "72.2.43.145"
                 },
                 {
-                    "port":"wan2",
+                    "port": "port16",
                     "vpn": "True",
-                    "name":"Radiant",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"67.208.25.129",
-                    "address":"67.208.25.129",
-                    "netmask":"255.255.255.252",
-                    "gateway":"67.208.25.134"
+                    "name": "TelusTeragoFibre",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "200",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "68.179.64.69",
+                    "address": "68.179.64.69",
+                    "netmask": "255.255.255.248",
+                    "gateway": "68.179.64.70"
                 }
             ],
-            "internal":[
-                {
-                    "port":"lan",
-                    "name":"DTMNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.133.1",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "dhcp":[
-                {
-                    "port":"lan",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
-                }
-            ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ]
-        },
-        "SAR":{
-            "name":"SAR",
-            "branch": "True",
-            "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":0,
-                "mgmt":0,
-                "dmz":1,
-                "internal":1
-            },
-            "wan":[
-                {
-                    "port":"wan1",
-                    "vpn": "True",
-                    "name":"Cogeco",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"72.38.84.162",
-                    "address":"72.38.84.162",
-                    "netmask":"255.255.255.240",
-                    "gateway":"72.38.84.161"
+            "internal": [{
+                    "port": "SURNET",
+                    "name": "SURNET",
+                    "vdom": "root",
+                    "access": ["ping", "ssh", "https"],
+                    "type": "switch",
+                    "address": "192.168.103.1",
+                    "netmask": "255.255.255.0"
                 },
                 {
-                    "port":"wan2",
-                    "vpn": "True",
-                    "name":"Radiant",
-                    "access":["ping","ssh","https"],
-                    "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"76.75.246.177",
-                    "address":"76.75.246.177",
-                    "netmask":"255.255.255.248",
-                    "gateway":"76.75.246.182"
+                    "port": "port9",
+                    "name": "SURCAMERAS",
+                    "vdom": "root",
+                    "access": ["ping", "ssh", "https"],
+                    "type": "physical",
+                    "address": "192.168.50.1",
+                    "netmask": "255.255.255.0"
+                },
+                {
+                    "port": "SURNET",
+                    "name": "SURVOIP",
+                    "vdom": "root",
+                    "access": ["ping", "ssh", "https"],
+                    "type": "vlan",
+                    "vlanid": "2",
+                    "address": "10.10.2.254",
+                    "netmask": "255.255.255.0"
                 }
             ],
-            "internal":[
+            "switch": [{
+                "name": "SURNET",
+                "members": ["port5", "port6", "port7", "port8"]
+            }],
+            "dhcp": [{
+                "port": "SURNET",
+                "type": "switch",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }],
+            "vip": [{
+                    "name": "MITEL-1",
+                    "extintf": "port14",
+                    "extport": "31443",
+                    "intintf": "SURVOIP",
+                    "intaddr": "10.10.2.1",
+                    "intport": "443"
+                },
                 {
-                    "port":"lan",
-                    "name":"SARNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.106.1",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "dhcp":[
+                    "name": "MITEL-2",
+                    "extintf": "port14",
+                    "extport": "32443",
+                    "intintf": "SURVOIP",
+                    "intaddr": "10.10.2.2",
+                    "intport": "443"
+                },
                 {
-                    "port":"lan",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
-                }
-            ],
-            "zone":[
+                    "name": "Card-Access",
+                    "extintf": "port14",
+                    "extport": "30080",
+                    "intintf": "SURCAMERAS",
+                    "intaddr": "192.168.50.253",
+                    "intport": "80"
+                },
                 {
-                    "name":"ARTG-VPNNET"
+                    "name": "Camera-Server",
+                    "extintf": "port14",
+                    "extport": "30080",
+                    "intintf": "SURCAMERAS",
+                    "intaddr": "192.168.50.27",
+                    "intport": "80"
+                },
+                {
+                    "name": "Camera-ServerRDP",
+                    "extintf": "port14",
+                    "extport": "38389",
+                    "intintf": "SURCAMERAS",
+                    "intaddr": "192.168.50.27",
+                    "intport": "3389"
                 }
             ]
         },
-        "MSG":{
-            "name":"MSG",
+        "PGE": {
+            "name": "PGE",
             "branch": "True",
             "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":0,
-                "mgmt":0,
-                "dmz":1,
-                "internal":1
+            "interfaces": {
+                "wan": 2,
+                "port": 0,
+                "mgmt": 0,
+                "dmz": 1,
+                "internal": 1
             },
-            "wan":[
-                {
-                    "port":"wan1",
+            "wan": [{
+                    "port": "wan1",
                     "vpn": "True",
-                    "name":"TeraGo",
-                    "access":["ping","ssh","https"],
+                    "name": "Shaw",
+                    "access": ["ping", "ssh", "https"],
                     "weight": "100",
-                    "type":"physical",
-                    "mode":"static",
-                    "extaddress":"68.179.99.113",
-                    "address":"68.179.99.113",
-                    "netmask":"255.255.255.248",
-                    "gateway":"68.179.99.118"
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "184.68.38.166",
+                    "address": "184.68.38.166",
+                    "netmask": "255.255.255.525",
+                    "gateway": "184.68.38.165"
+                },
+                {
+                    "port": "wan2",
+                    "vpn": "True",
+                    "name": "Radiant",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "209.207.69.193",
+                    "address": "209.207.69.193",
+                    "netmask": "255.255.255.248",
+                    "gateway": "209.207.69.198"
                 }
             ],
-            "internal":[
-                {
-                    "port":"lan",
-                    "name":"MSGNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"192.168.109.1",
-                    "netmask":"255.255.255.0"
-                }
-            ],
-            "dhcp":[
-                {
-                    "port":"lan",
-                    "type":"physical",
-                    "domain":"arthomson.local",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100","199"],["245","249"]]
-                }
-            ],
-            "zone":[
-                {
-                    "name":"ARTG-VPNNET"
-                }
-            ]
+            "internal": [{
+                "port": "lan",
+                "name": "PGENET",
+                "vdom": "root",
+                "access": ["ping", "ssh", "https"],
+                "type": "physical",
+                "address": "192.168.130.1",
+                "netmask": "255.255.255.0"
+            }],
+            "dhcp": [{
+                "port": "lan",
+                "type": "physical",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }]
         },
-        "PIP":{
-            "name":"PIP",
+        "GPE": {
+            "name": "GPE",
             "branch": "True",
             "version": "5",
-            "interfaces":{
-                "wan":2,
-                "port":0,
-                "mgmt":0,
-                "dmz":1,
-                "internal":1
+            "interfaces": {
+                "wan": 2,
+                "port": 0,
+                "mgmt": 0,
+                "dmz": 1,
+                "internal": 1
             },
-            "wan":[
-                {
-                    "port":"wan1",
+            "wan": [{
+                    "port": "wan1",
                     "vpn": "True",
-                    "name":"Shaw",
-                    "access":["ping","ssh","https"],
+                    "name": "Telus",
+                    "access": ["ping", "ssh", "https"],
                     "weight": "100",
-                    "type":"physical",
-                    "mode":"dhcp",
-                    "extaddress":"68.150.200.25",
-                    "address":"68.150.200.25",
-                    "netmask":"255.255.252.0",
-                    "gateway":"68.150.200.1"
+                    "type": "physical",
+                    "mode": "dhcp",
+                    "extaddress": "137.186.60.135",
+                    "address": "137.186.60.135",
+                    "netmask": "255.255.255.0",
+                    "gateway": "137.186.60.1"
+                },
+                {
+                    "port": "wan2",
+                    "vpn": "True",
+                    "name": "Radiant",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "209.207.64.117",
+                    "address": "209.207.64.117",
+                    "netmask": "255.255.255.248",
+                    "gateway": "209.207.64.118"
                 }
             ],
-            "internal":[
+            "internal": [{
+                "port": "internal",
+                "name": "GPENET",
+                "vdom": "root",
+                "access": ["ping", "ssh", "https"],
+                "type": "physical",
+                "address": "192.168.107.1",
+                "netmask": "255.255.255.0"
+            }],
+            "dhcp": [{
+                "port": "internal",
+                "type": "physical",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }]
+        },
+        "FTM": {
+            "name": "FTM",
+            "branch": "True",
+            "version": "5",
+            "interfaces": {
+                "wan": 2,
+                "port": 0,
+                "mgmt": 0,
+                "dmz": 1,
+                "internal": 1
+            },
+            "wan": [{
+                    "port": "wan1",
+                    "vpn": "True",
+                    "name": "Telus",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "dhcp",
+                    "extaddress": "75.159.184.149",
+                    "address": "75.159.184.149",
+                    "netmask": "255.255.255.0",
+                    "gateway": "75.159.184.1"
+                },
                 {
-                    "port":"lan",
-                    "name":"PIPNET",
-                    "vdom":"root",
-                    "access":["ping","ssh","https"],
-                    "type":"physical",
-                    "address":"10.0.30.1",
-                    "netmask":"255.255.254.0"
+                    "port": "wan2",
+                    "vpn": "True",
+                    "name": "Radiant",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "209.207.64.121",
+                    "address": "209.207.64.121",
+                    "netmask": "255.255.255.248",
+                    "gateway": "209.207.64.126"
                 }
             ],
-            "dhcp":[
+            "internal": [{
+                "port": "internal",
+                "name": "FTMNET",
+                "vdom": "root",
+                "access": ["ping", "ssh", "https"],
+                "type": "physical",
+                "address": "192.168.114.1",
+                "netmask": "255.255.255.0"
+            }],
+            "dhcp": [{
+                "port": "internal",
+                "type": "physical",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }]
+        },
+        "CGY": {
+            "name": "CGY",
+            "branch": "True",
+            "version": "5",
+            "interfaces": {
+                "wan": 2,
+                "port": 0,
+                "mgmt": 0,
+                "dmz": 1,
+                "internal": 1
+            },
+            "wan": [{
+                    "port": "wan1",
+                    "vpn": "True",
+                    "name": "TeraGo",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "68.179.6.145",
+                    "address": "68.179.6.145",
+                    "netmask": "255.255.255.248",
+                    "gateway": "68.179.6.150"
+                },
                 {
-                    "port":"lan",
-                    "type":"physical",
-                    "domain":"preeper.org",
-                    "dns":["10.0.100.21","10.0.100.22"],
-                    "leasetime":"600",
-                    "iprange":[["100.0","100.255"]]
+                    "port": "wan2",
+                    "vpn": "True",
+                    "name": "Radiant",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "5",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "216.40.117.153",
+                    "address": "216.40.117.153",
+                    "netmask": "255.255.255.252",
+                    "gateway": "216.40.117.154"
                 }
             ],
-            "zone":[
+            "internal": [{
+                "port": "lan",
+                "name": "CGYNET",
+                "vdom": "root",
+                "access": ["ping", "ssh", "https"],
+                "type": "physical",
+                "address": "192.168.102.1",
+                "netmask": "255.255.255.0"
+            }],
+            "dhcp": [{
+                "port": "lan",
+                "type": "physical",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }]
+        },
+        "MTL": {
+            "name": "MTL",
+            "branch": "True",
+            "version": "5",
+            "interfaces": {
+                "wan": 2,
+                "port": 0,
+                "mgmt": 0,
+                "dmz": 1,
+                "internal": 1
+            },
+            "wan": [{
+                    "port": "wan1",
+                    "vpn": "True",
+                    "name": "TeraGo",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "173.212.161.125",
+                    "address": "173.212.161.125",
+                    "netmask": "255.255.255.252",
+                    "gateway": "173.212.161.126"
+                },
                 {
-                    "name":"ARTG-VPNNET"
+                    "port": "wan2",
+                    "vpn": "False",
+                    "name": "Telus",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "67.208.9.211",
+                    "address": "67.208.9.211",
+                    "netmask": "255.255.255.255",
+                    "gateway": "67.208.9.211"
                 }
-            ]
+            ],
+            "internal": [{
+                "port": "lan",
+                "name": "MTLNET",
+                "vdom": "root",
+                "access": ["ping", "ssh", "https"],
+                "type": "physical",
+                "address": "192.168.124.1",
+                "netmask": "255.255.255.0"
+            }],
+            "dhcp": [{
+                "port": "lan",
+                "type": "physical",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }]
+        },
+        "PRK": {
+            "name": "PRK",
+            "branch": "True",
+            "version": "5",
+            "interfaces": {
+                "wan": 2,
+                "port": 0,
+                "mgmt": 0,
+                "dmz": 1,
+                "internal": 1
+            },
+            "wan": [{
+                    "port": "wan1",
+                    "vpn": "True",
+                    "name": "Shaw",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "184.71.2.26",
+                    "address": "184.71.2.26",
+                    "netmask": "255.255.255.252",
+                    "gateway": "184.71.2.25"
+                },
+                {
+                    "port": "wan2",
+                    "vpn": "True",
+                    "name": "Radiant",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "209.207.64.89",
+                    "address": "209.207.64.89",
+                    "netmask": "255.255.255.248",
+                    "gateway": "209.207.64.94"
+                }
+            ],
+            "internal": [{
+                "port": "lan",
+                "name": "PRKNET",
+                "vdom": "root",
+                "access": ["ping", "ssh", "https"],
+                "type": "physical",
+                "address": "192.168.108.1",
+                "netmask": "255.255.255.0"
+            }],
+            "dhcp": [{
+                "port": "lan",
+                "type": "physical",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }]
+        },
+        "REG": {
+            "name": "REG",
+            "branch": "True",
+            "version": "5",
+            "interfaces": {
+                "wan": 2,
+                "port": 0,
+                "mgmt": 0,
+                "dmz": 1,
+                "internal": 1
+            },
+            "wan": [{
+                    "port": "wan1",
+                    "vpn": "True",
+                    "name": "SaskTel",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "67.225.57.17",
+                    "address": "67.225.57.17",
+                    "netmask": "255.255.255.0",
+                    "gateway": "67.225.57.254"
+                },
+                {
+                    "port": "wan2",
+                    "vpn": "True",
+                    "name": "Radiant",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "67.208.25.57",
+                    "address": "67.208.25.57",
+                    "netmask": "255.255.255.248",
+                    "gateway": "67.208.25.62"
+                }
+            ],
+            "internal": [{
+                "port": "lan",
+                "name": "REGNET",
+                "vdom": "root",
+                "access": ["ping", "ssh", "https"],
+                "type": "physical",
+                "address": "10.0.121.1",
+                "netmask": "255.255.255.0"
+            }],
+            "dhcp": [{
+                "port": "lan",
+                "type": "physical",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }]
+        },
+        "DTM": {
+            "name": "DTM",
+            "branch": "True",
+            "version": "5",
+            "interfaces": {
+                "wan": 2,
+                "port": 0,
+                "mgmt": 0,
+                "dmz": 1,
+                "internal": 1
+            },
+            "wan": [{
+                    "port": "wan1",
+                    "vpn": "True",
+                    "name": "Alliant",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "142.177.48.2",
+                    "address": "142.177.48.2",
+                    "netmask": "255.255.255.248",
+                    "gateway": "142.177.48.1"
+                },
+                {
+                    "port": "wan2",
+                    "vpn": "True",
+                    "name": "Radiant",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "67.208.25.129",
+                    "address": "67.208.25.129",
+                    "netmask": "255.255.255.252",
+                    "gateway": "67.208.25.134"
+                }
+            ],
+            "internal": [{
+                "port": "lan",
+                "name": "DTMNET",
+                "vdom": "root",
+                "access": ["ping", "ssh", "https"],
+                "type": "physical",
+                "address": "192.168.133.1",
+                "netmask": "255.255.255.0"
+            }],
+            "dhcp": [{
+                "port": "lan",
+                "type": "physical",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }]
+        },
+        "SAR": {
+            "name": "SAR",
+            "branch": "True",
+            "version": "5",
+            "interfaces": {
+                "wan": 2,
+                "port": 0,
+                "mgmt": 0,
+                "dmz": 1,
+                "internal": 1
+            },
+            "wan": [{
+                    "port": "wan1",
+                    "vpn": "True",
+                    "name": "Cogeco",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "72.38.84.162",
+                    "address": "72.38.84.162",
+                    "netmask": "255.255.255.240",
+                    "gateway": "72.38.84.161"
+                },
+                {
+                    "port": "wan2",
+                    "vpn": "True",
+                    "name": "Radiant",
+                    "access": ["ping", "ssh", "https"],
+                    "weight": "100",
+                    "type": "physical",
+                    "mode": "static",
+                    "extaddress": "76.75.246.177",
+                    "address": "76.75.246.177",
+                    "netmask": "255.255.255.248",
+                    "gateway": "76.75.246.182"
+                }
+            ],
+            "internal": [{
+                "port": "lan",
+                "name": "SARNET",
+                "vdom": "root",
+                "access": ["ping", "ssh", "https"],
+                "type": "physical",
+                "address": "192.168.106.1",
+                "netmask": "255.255.255.0"
+            }],
+            "dhcp": [{
+                "port": "lan",
+                "type": "physical",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }]
+        },
+        "MSG": {
+            "name": "MSG",
+            "branch": "True",
+            "version": "5",
+            "interfaces": {
+                "wan": 2,
+                "port": 0,
+                "mgmt": 0,
+                "dmz": 1,
+                "internal": 1
+            },
+            "wan": [{
+                "port": "wan1",
+                "vpn": "True",
+                "name": "TeraGo",
+                "access": ["ping", "ssh", "https"],
+                "weight": "100",
+                "type": "physical",
+                "mode": "static",
+                "extaddress": "68.179.99.113",
+                "address": "68.179.99.113",
+                "netmask": "255.255.255.248",
+                "gateway": "68.179.99.118"
+            }],
+            "internal": [{
+                "port": "lan",
+                "name": "MSGNET",
+                "vdom": "root",
+                "access": ["ping", "ssh", "https"],
+                "type": "physical",
+                "address": "192.168.109.1",
+                "netmask": "255.255.255.0"
+            }],
+            "dhcp": [{
+                "port": "lan",
+                "type": "physical",
+                "domain": "arthomson.local",
+                "dns": ["10.0.100.21", "10.0.100.22"],
+                "leasetime": "600",
+                "iprange": [
+                    ["100", "199"],
+                    ["245", "249"]
+                ]
+            }],
+            "zone": [{
+                "name": "ARTG-VPNNET"
+            }]
         }
     }
 }
